@@ -174,10 +174,6 @@
                                 <thead>
                                 <tr>
                                     <th>JobName</th>
-                                    <!--<th>CronExpression</th>-->
-                                    <th>RunScript</th>
-                                    <!--<th>LastRun</th>
-                                    <th>NextRun</th>-->
                                     <th>Status</th>
                                     <th>Result</th>
                                     <th>Action</th>
@@ -188,19 +184,25 @@
                                 {{range $index, $job := .jobs}}
                                 <tr>
                                     <td>{{$job.JobName}}</td>
-                                    <!--<td class="center">{{$job.CronExpression}}</td>-->
-                                    <td class="center">{{$job.RunScript}}</td>
-                                    <!--<td class="center">{{$job.LastRun}}</td>
-                                    <td class="center">{{$job.NextRun}}</td>-->
                                     <td class="center">
+                                        {{if eq $job.Status "Active"}}
                                         <span class="label-success label label-default">{{$job.Status}}</span>
+                                        {{end}}
+                                        {{if eq $job.Status "InActive"}}
+                                        <span class="label-primary label label-default">{{$job.Status}}</span>
+                                        {{end}}
                                     </td>
                                     <td class="center">
+                                        {{if eq $job.Result "Success"}}
                                         <span class="label-success label label-default">{{$job.Result}}</span>
+                                        {{end}}
+                                        {{if eq $job.Result "Failure"}}
+                                        <span class="label-danger label label-default">{{$job.Result}}</span>
+                                        {{end}}
                                     </td>
                                     <td class="center">
-                                        <!-- Modal Window = http://jsfiddle.net/2AU6q/3/ -->
-                                        <a class="btn btn-setting btn-xs btn-success btn-default" href="#">
+                                        <!-- Modal Window = http://jsfiddle.net/2AU6q/3/-->
+                                        <a class="btn btn-xs btn-success btn-default" data-toggle="modal" data-target="#myModal-{{$index}}" href="#">
                                             <i class="glyphicon glyphicon-zoom-in icon-white"></i>
                                             View
                                         </a>
@@ -212,6 +214,29 @@
                                             <i class="glyphicon glyphicon-trash icon-white"></i>
                                             Delete
                                         </a>
+
+                                        <!-- Modal Windows For more details -->
+                                        <div class="modal fade" id="myModal-{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                                             aria-hidden="true">
+
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">×</button>
+                                                        <h3>Details of {{$job.JobName}}</h3>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>CronExpression:  {{$job.CronExpression}}</p>
+                                                        <p>LastRun       :  {{$job.LastRun}}</p>
+                                                        <p>NextRun       :  {{$job.NextRun}}</p>
+                                                        <p>Program       :  {{$job.RunScript}}</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                                 {{end}}
@@ -245,26 +270,6 @@
     <!-- Ad ends -->
 
     <hr>
-
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
-
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h3>Settings</h3>
-                </div>
-                <div class="modal-body">
-                    <p>Here settings can be configured...</p>
-                </div>
-                <div class="modal-footer">
-                    <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
-                    <a href="#" class="btn btn-primary" data-dismiss="modal">Save changes</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <footer class="row">
         <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; <a href="https://github.com/anidotnet" target="_blank">Anindya Chatterjee</a> 2014</p>

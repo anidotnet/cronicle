@@ -42,7 +42,7 @@ func getJobs() []*models.Job {
 	duration, _ = time.ParseDuration("0.5h")
 	job2.NextRun = time.Now().Add(duration)
 	job2.Result = models.FAILURE
-	job2.Status = models.ACTIVE
+	job2.Status = models.INACTIVE
 	job2.User = "2E"
 	jobs[1] = job2
 
