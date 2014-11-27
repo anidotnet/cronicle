@@ -165,11 +165,17 @@
                                 <!--<a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>-->
                                 <a href="#" class="btn btn-minimize btn-round btn-default"><i
                                             class="glyphicon glyphicon-chevron-up"></i></a>
-                                <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+                                <!--<a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>-->
                             </div>
                         </div>
                         <div class="box-content">
-                            <div class="alert alert-info">For help with how to create and schedule a job please check <a href="https://github.com/anidotnet/cronicle" target="_blank">https://github.com/anidotnet/cronicle</a></div>
+                            <div class="alert alert-info">
+                                <!--For help with how to create and schedule a job please check <a href="https://github.com/anidotnet/cronicle" target="_blank">here.-->
+                                <a class="btn btn-info btn-sm" href="https://github.com/anidotnet/cronicle" target="_blank" style="text-decoration:none">
+                                    <i class="glyphicon glyphicon-book icon-white"></i>
+                                    Help
+                                </a>
+                            </div>
                             <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
                                 <thead>
                                 <tr>
@@ -226,10 +232,26 @@
                                                         <h3>Details of {{$job.JobName}}</h3>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <p>CronExpression:  {{$job.CronExpression}}</p>
-                                                        <p>LastRun       :  {{$job.LastRun}}</p>
-                                                        <p>NextRun       :  {{$job.NextRun}}</p>
-                                                        <p>Program       :  {{$job.RunScript}}</p>
+                                                        <table class="table table-responsive">
+                                                            <tbody>
+                                                            <tr>
+                                                                <td><b>CronExpression</b></td>
+                                                                <td>{{$job.CronExpression}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><b>LastRun</b></td>
+                                                                <td>{{$job.LastRun}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><b>NextRun</b></td>
+                                                                <td>{{$job.NextRun}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><b>Program</b></td>
+                                                                <td>{{$job.RunScript}}</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
