@@ -75,6 +75,12 @@
 			    	Contact me: {{.Email}}
 			    </p>
 			  </div>
+
+				{{range $key, $val := .jobs}}
+					{{$key}}
+					{{$val.JobName}}
+				{{end}}
+
 			</div>
 			</div>
 		</header>

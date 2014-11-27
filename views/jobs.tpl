@@ -173,105 +173,49 @@
                             <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
                                 <thead>
                                 <tr>
-                                    <th>Username</th>
-                                    <th>Date registered</th>
-                                    <th>Role</th>
+                                    <th>JobName</th>
+                                    <!--<th>CronExpression</th>-->
+                                    <th>RunScript</th>
+                                    <!--<th>LastRun</th>
+                                    <th>NextRun</th>-->
                                     <th>Status</th>
-                                    <th>Actions</th>
+                                    <th>Result</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>David R</td>
-                                    <td class="center">2012/01/01</td>
-                                    <td class="center">Member</td>
-                                    <td class="center">
-                                        <span class="label-success label label-default">Active</span>
-                                    </td>
-                                    <td class="center">
-                                        <a class="btn btn-success" href="#">
-                                            <i class="glyphicon glyphicon-zoom-in icon-white"></i>
-                                            View
-                                        </a>
-                                        <a class="btn btn-info" href="#">
-                                            <i class="glyphicon glyphicon-edit icon-white"></i>
-                                            Edit
-                                        </a>
-                                        <a class="btn btn-danger" href="#">
-                                            <i class="glyphicon glyphicon-trash icon-white"></i>
-                                            Delete
-                                        </a>
-                                    </td>
-                                </tr>
 
+                                {{range $index, $job := .jobs}}
+                                <tr>
+                                    <td>{{$job.JobName}}</td>
+                                    <!--<td class="center">{{$job.CronExpression}}</td>-->
+                                    <td class="center">{{$job.RunScript}}</td>
+                                    <!--<td class="center">{{$job.LastRun}}</td>
+                                    <td class="center">{{$job.NextRun}}</td>-->
+                                    <td class="center">
+                                        <span class="label-success label label-default">{{$job.Status}}</span>
+                                    </td>
+                                    <td class="center">
+                                        <span class="label-success label label-default">{{$job.Result}}</span>
+                                    </td>
+                                    <td class="center">
+                                        <!-- Modal Window = http://jsfiddle.net/2AU6q/3/ -->
+                                        <a class="btn btn-setting btn-xs btn-success btn-default" href="#">
+                                            <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                                            View
+                                        </a>
+                                        <a class="btn btn-info btn-xs" href="/job/edit/{{$job.JobId}}">
+                                            <i class="glyphicon glyphicon-edit icon-white"></i>
+                                            Edit
+                                        </a>
+                                        <a class="btn btn-danger btn-xs" href="/job/delete/{{$job.JobId}}">
+                                            <i class="glyphicon glyphicon-trash icon-white"></i>
+                                            Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                                {{end}}
 
-
-                                <tr>
-                                    <td>Sheikh Heera</td>
-                                    <td class="center">2012/02/01</td>
-                                    <td class="center">Staff</td>
-                                    <td class="center">
-                                        <span class="label-default label label-danger">Banned</span>
-                                    </td>
-                                    <td class="center">
-                                        <a class="btn btn-success" href="#">
-                                            <i class="glyphicon glyphicon-zoom-in icon-white"></i>
-                                            View
-                                        </a>
-                                        <a class="btn btn-info" href="#">
-                                            <i class="glyphicon glyphicon-edit icon-white"></i>
-                                            Edit
-                                        </a>
-                                        <a class="btn btn-danger" href="#">
-                                            <i class="glyphicon glyphicon-trash icon-white"></i>
-                                            Delete
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Saruar Ahmed</td>
-                                    <td class="center">2012/03/01</td>
-                                    <td class="center">Member</td>
-                                    <td class="center">
-                                        <span class="label-warning label label-default">Pending</span>
-                                    </td>
-                                    <td class="center">
-                                        <a class="btn btn-success" href="#">
-                                            <i class="glyphicon glyphicon-zoom-in icon-white"></i>
-                                            View
-                                        </a>
-                                        <a class="btn btn-info" href="#">
-                                            <i class="glyphicon glyphicon-edit icon-white"></i>
-                                            Edit
-                                        </a>
-                                        <a class="btn btn-danger" href="#">
-                                            <i class="glyphicon glyphicon-trash icon-white"></i>
-                                            Delete
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Ifrah Jannat</td>
-                                    <td class="center">2012/06/01</td>
-                                    <td class="center">Admin</td>
-                                    <td class="center">
-                                        <span class="label-default label">Inactive</span>
-                                    </td>
-                                    <td class="center">
-                                        <a class="btn btn-success" href="#">
-                                            <i class="glyphicon glyphicon-zoom-in icon-white"></i>
-                                            View
-                                        </a>
-                                        <a class="btn btn-info" href="#">
-                                            <i class="glyphicon glyphicon-edit icon-white"></i>
-                                            Edit
-                                        </a>
-                                        <a class="btn btn-danger" href="#">
-                                            <i class="glyphicon glyphicon-trash icon-white"></i>
-                                            Delete
-                                        </a>
-                                    </td>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -301,6 +245,26 @@
     <!-- Ad ends -->
 
     <hr>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h3>Settings</h3>
+                </div>
+                <div class="modal-body">
+                    <p>Here settings can be configured...</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
+                    <a href="#" class="btn btn-primary" data-dismiss="modal">Save changes</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="row">
         <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; <a href="https://github.com/anidotnet" target="_blank">Anindya Chatterjee</a> 2014</p>
