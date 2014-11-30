@@ -12,14 +12,21 @@ type CronController struct {
 }
 
 func (c *CronController) Get(){
-	// list all scheduled jobs
-	beego.Debug("Listing all scheduled jobs..")
-	jobs := getJobs()
-	c.Data["jobs"] = jobs
-	c.TplNames = "jobs.tpl"
+	if c.GetSession("User") != nil {
+		beego.Debug("Listing all scheduled jobs..")
+		user := c.GetSession("User")
+		c.Data["User"] = user
+		jobs := getJobs(user.(string))
+		c.Data["jobs"] = jobs
+		c.Layout = "layout.html"
+		c.TplNames = "jobs.tpl"
+	} else {
+		c.Layout = "layout.html"
+		c.TplNames = "login.tpl"
+	}
 }
 
-func getJobs() []*models.Job {
+func getJobs(user string) []*models.Job {
 	jobs := make([]*models.Job, 2)
 
 	job1 := new(models.Job)
@@ -48,5 +55,6 @@ func getJobs() []*models.Job {
 
 	return jobs
 }
+
 
 

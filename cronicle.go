@@ -13,6 +13,13 @@ func main() {
 func initApp() {
 	initLog()
 	initContents()
+	initSession()
+}
+
+func initSession() {
+	beego.SessionOn = true
+	beego.SessionProvider = "file"
+	beego.SessionSavePath = "./tmp"
 }
 
 func initContents() {
