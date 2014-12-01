@@ -31,8 +31,9 @@
                 </div>
                 <div class="clearfix"></div>
 
-                <p class="center col-md-5">
+                <p>
                     <button type="submit" class="btn btn-primary">Login</button>
+                    <a href="#" class="btn btn-primary"><i class="glyphicon glyphicon-user"></i> New User</a>
                 </p>
             </fieldset>
         </form>

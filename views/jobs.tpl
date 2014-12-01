@@ -40,7 +40,7 @@
                         <h2><i class="glyphicon glyphicon-user"></i> Scheduled Jobs</h2>
 
                         <div class="box-icon">
-                            <a href="/job/new" class="btn btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i></a>
+                            <a href="/newjob" class="btn btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i></a>
                             <a href="https://github.com/anidotnet/cronicle" class="btn btn-round btn-default"><i class="glyphicon glyphicon-question-sign"></i></a>
                             <a href="#" class="btn btn-minimize btn-round btn-default"><i class="glyphicon glyphicon-chevron-up"></i></a>
                         </div>
