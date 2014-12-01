@@ -94,7 +94,7 @@
                                         <i class="glyphicon glyphicon-zoom-in icon-white"></i>
                                         View
                                     </a>
-                                    <a class="btn btn-info btn-xs" href="/job/edit/{{$job.JobId}}">
+                                    <a class="btn btn-info btn-xs" href="/editjob?jobId={{$job.JobId}}">
                                         <i class="glyphicon glyphicon-edit icon-white"></i>
                                         Edit
                                     </a>

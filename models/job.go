@@ -15,6 +15,7 @@ type Job struct {
 	NextRun			time.Time
 	Status			JobStatus
 	Result			RunStatus
+	ModifiedOn			time.Time
 }
 
 type JobStatus string
