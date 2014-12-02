@@ -21,20 +21,14 @@
     </div>
     <!--/span-->
     <!-- left menu ends -->
-
+    <!-- Similar to Jenkins Dashboard -->
     <div id="content" class="col-lg-10 col-sm-10">
-        <!-- content starts -->
+
         <div class="row">
             <div class="box col-md-12">
                 <div class="box-inner">
                     <div class="box-header well" data-original-title="">
-                        <h2><i class="glyphicon glyphicon-user"></i> Scheduled Jobs</h2>
-
-                        <div class="box-icon">
-                            <a href="/newjob" class="btn btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i></a>
-                            <a href="https://github.com/anidotnet/cronicle" class="btn btn-round btn-default"><i class="glyphicon glyphicon-question-sign"></i></a>
-                            <a href="#" class="btn btn-minimize btn-round btn-default"><i class="glyphicon glyphicon-chevron-up"></i></a>
-                        </div>
+                        <h2><i class="glyphicon glyphicon-user"></i> Details of {{.JobName}}</h2>
                     </div>
                     <div class="box-content">
                         {{if not .IsError}}
@@ -142,11 +136,7 @@
                     </div>
                 </div>
             </div>
-            <!--/span-->
         </div>
-        <!--/row-->
-        <!-- content ends -->
-    </div>
-    <!--/#content.col-md-0-->
-</div><!--/fluid-row-->
 
+    </div>
+</div>
